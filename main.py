@@ -27,6 +27,23 @@ async def onboarding_message(**payload):
     # Post the onboarding message.
     web_client.chat_postMessage(channel=channel, text="Welcome to the BEAM Slack!")
 
+# ============== Message Events ============= #
+# When a user sends a DM, the event type will be 'message'.
+# Here we'll link the message callback to the 'message' event.
+@slack.RTMClient.run_on(event="message")
+async def message(**payload):
+    """Display the onboarding welcome message after receiving a message
+    that contains "start".
+    """
+    data = payload["data"]
+    web_client = payload["web_client"]
+    channel_id = data.get("channel")
+    user_id = data.get("user")
+    text = data.get("text")
+
+    if "minecraft" in text:
+        web_client.chat_postMessage(channel=channel_id, text="Minecraft is a great game.")
+
 if __name__ == "__main__":
     logger = logging.getLogger()
     logger.setLevel(logging.DEBUG)
