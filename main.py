@@ -42,9 +42,7 @@ async def message(**payload):
     text = data.get("text")
 
     if "!minecraft" in text:
-        web_client.chat_postMessage(channel=channel_id, text="Minecraft is a great game. \
-            If you want to join a server with other people from BEAM, DM Nikhil for an \
-            invite.")
+        web_client.chat_postMessage(channel=channel_id, text="Minecraft is a great game. If you want to join a server with other people from BEAM, DM Nikhil for an invite.")
 
 if __name__ == "__main__":
     logger = logging.getLogger()
