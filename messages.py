@@ -12,3 +12,4 @@ def processMessage(text):
         return str(requests.get("https://icanhazdadjoke.com/", headers={"Accept": "application/json"}).json()["joke"])
     elif "high five" in text.lower():
         return "✋"
+    return None

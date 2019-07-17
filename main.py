@@ -42,7 +42,8 @@ async def message(**payload):
     text = data.get("text")
 
     reply = messages.processMessage(text)
-    web_client.chat_postMessage(channel=channel_id, text=reply)
+    if reply:
+        web_client.chat_postMessage(channel=channel_id, text=reply)
 
 if __name__ == "__main__":
     logger = logging.getLogger()
