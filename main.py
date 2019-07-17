@@ -1,5 +1,6 @@
 import os
 import logging
+import random
 import asyncio
 import ssl as ssl_lib
 
@@ -41,11 +42,19 @@ async def message(**payload):
 
     if "!minecraft" in text:
         web_client.chat_postMessage(channel=channel_id, text="Minecraft is a great game. If you want to join a server with other people from BEAM, DM Nikhil for an invite.")
-    elif "I am " in text or "I'm " in text:
+    elif "i am " in text.lower() or "i'm " in text.lower():
         target_word = text.split("am ")[1] if ("I am " in text) else text.split("I'm ")[1]
         web_client.chat_postMessage(channel=channel_id, text="Hi " + target_word + ", my name is Beam Bot!")
     elif "never gonna give you up" in text.lower():
         web_client.chat_postMessage(channel=channel_id, text="Never gonna let you down.")
+    elif "i'm bored" in text.lower() or "i am bored" in text.lower() or "im bored" in text.lower():
+        choice = random.randint(1, 3)
+        if choice == 1:
+            web_client.chat_postMessage(channel=channel_id, text="Why not play minecraft? !minecraft for more.")
+        if choice == 2:
+            web_client.chat_postMessage(channel=channel_id, text="Here's a neat article for you to read: http://www.latlmes.com/arts/return-of-the-golden-age-of-comics-1")
+        if choice == 3:
+            web_client.chat_postMessage(channel=channel_id, text="Me too.")
 
 if __name__ == "__main__":
     logger = logging.getLogger()
