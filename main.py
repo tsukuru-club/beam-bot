@@ -41,9 +41,9 @@ async def message(**payload):
 
     if "!minecraft" in text:
         web_client.chat_postMessage(channel=channel_id, text="Minecraft is a great game. If you want to join a server with other people from BEAM, DM Nikhil for an invite.")
-    elif "I am " or "I'm " in text:
+    elif "I am " in text or "I'm " in text:
         target_word = text.split("am ")[1] if ("I am " in text) else text.split("I'm ")[1]
-        web_client.chat_postMessage(channel=channel_id, text="Hi there" + target_word + ", my name is Beam Bot!")
+        web_client.chat_postMessage(channel=channel_id, text="Hi " + target_word + ", my name is Beam Bot!")
 
 if __name__ == "__main__":
     logger = logging.getLogger()
