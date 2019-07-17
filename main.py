@@ -48,14 +48,6 @@ async def message(**payload):
         web_client.chat_postMessage(channel=channel_id, text="Hi " + target_word + ", my name is Beam Bot!")
     elif "never gonna give you up" in text.lower():
         web_client.chat_postMessage(channel=channel_id, text="Never gonna let you down.")
-    elif "estoy aburrido" in text.lower():
-        choice = random.randint(1, 3)
-        if choice == 1:
-            web_client.chat_postMessage(channel=channel_id, text="Why not play minecraft? !minecraft for more.")
-        if choice == 2:
-            web_client.chat_postMessage(channel=channel_id, text="Here's a neat article for you to read: http://www.latlmes.com/arts/return-of-the-golden-age-of-comics-1")
-        if choice == 3:
-            web_client.chat_postMessage(channel=channel_id, text="Me too.")
     elif "tell me a joke" in text.lower():
         joke = str(requests.get("https://icanhazdadjoke.com/", headers={"Accept": "application/json"}).json()["joke"])
         web_client.chat_postMessage(channel=channel_id, text=joke)
