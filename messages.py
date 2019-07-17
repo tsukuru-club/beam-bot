@@ -1,4 +1,5 @@
 import requests
+import crypto
 
 def processMessage(text):
     if "!minecraft" in text:
@@ -12,4 +13,6 @@ def processMessage(text):
         return str(requests.get("https://icanhazdadjoke.com/", headers={"Accept": "application/json"}).json()["joke"])
     elif "high five" in text.lower():
         return "✋"
+    elif "get price of " in text.lower():
+        return crypto.message(text)
     return None
