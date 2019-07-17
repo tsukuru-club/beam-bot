@@ -51,6 +51,8 @@ async def message(**payload):
     elif "tell me a joke" in text.lower():
         joke = str(requests.get("https://icanhazdadjoke.com/", headers={"Accept": "application/json"}).json()["joke"])
         web_client.chat_postMessage(channel=channel_id, text=joke)
+    elif "high five" in text.lower():
+        web_client.chat_postMessage(channel=channel_id, text="✋")
 
 if __name__ == "__main__":
     logger = logging.getLogger()
