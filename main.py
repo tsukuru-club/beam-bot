@@ -6,7 +6,7 @@ import ssl as ssl_lib
 
 import certifi
 import slack
-import requests
+import messages
 
 # ================ Team Join Event =============== #
 # When the user first joins a team, the type of the event will be 'team_join'.
@@ -41,18 +41,8 @@ async def message(**payload):
     user_id = data.get("user")
     text = data.get("text")
 
-    if "!minecraft" in text:
-        web_client.chat_postMessage(channel=channel_id, text="Minecraft is a great game. If you want to join a server with other people from BEAM, DM Nikhil for an invite.")
-    elif "i am " in text.lower()[0:8] or "i'm " in text.lower()[0:8]:
-        target_word = text.split("am ")[1] if ("I am " in text) else text.split("I'm ")[1]
-        web_client.chat_postMessage(channel=channel_id, text="Hi " + target_word + ", my name is Beam Bot!")
-    elif "never gonna give you up" in text.lower():
-        web_client.chat_postMessage(channel=channel_id, text="Never gonna let you down.")
-    elif "tell me a joke" in text.lower():
-        joke = str(requests.get("https://icanhazdadjoke.com/", headers={"Accept": "application/json"}).json()["joke"])
-        web_client.chat_postMessage(channel=channel_id, text=joke)
-    elif "high five" in text.lower():
-        web_client.chat_postMessage(channel=channel_id, text="✋")
+    reply = messages.processMessage(text)
+    web_client.chat_postMessage(channel=channel_id, text=reply)
 
 if __name__ == "__main__":
     logger = logging.getLogger()
