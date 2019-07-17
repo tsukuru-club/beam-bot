@@ -13,6 +13,6 @@ def processMessage(text):
         return str(requests.get("https://icanhazdadjoke.com/", headers={"Accept": "application/json"}).json()["joke"])
     elif "high five" in text.lower():
         return "✋"
-    elif "get price of " in text.lower():
+    elif "get price of " in text:
         return crypto.message(text)
     return None
