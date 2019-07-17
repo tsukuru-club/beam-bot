@@ -47,7 +47,7 @@ async def message(**payload):
         web_client.chat_postMessage(channel=channel_id, text="Hi " + target_word + ", my name is Beam Bot!")
     elif "never gonna give you up" in text.lower():
         web_client.chat_postMessage(channel=channel_id, text="Never gonna let you down.")
-    elif "i'm bored" in text.lower() or "i am bored" in text.lower() or "im bored" in text.lower():
+    elif "estoy aburrido" in text.lower():
         choice = random.randint(1, 3)
         if choice == 1:
             web_client.chat_postMessage(channel=channel_id, text="Why not play minecraft? !minecraft for more.")
