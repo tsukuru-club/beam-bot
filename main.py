@@ -6,6 +6,7 @@ import ssl as ssl_lib
 
 import certifi
 import slack
+import requests
 
 # ================ Team Join Event =============== #
 # When the user first joins a team, the type of the event will be 'team_join'.
@@ -55,6 +56,9 @@ async def message(**payload):
             web_client.chat_postMessage(channel=channel_id, text="Here's a neat article for you to read: http://www.latlmes.com/arts/return-of-the-golden-age-of-comics-1")
         if choice == 3:
             web_client.chat_postMessage(channel=channel_id, text="Me too.")
+    elif "tell me a joke" in text.lower():
+        joke = str(requests.get("https://icanhazdadjoke.com/", headers={"Accept": "application/json"}).json()["joke"])
+        web_client.chat_postMessage(channel=channel_id, text=joke)
 
 if __name__ == "__main__":
     logger = logging.getLogger()
