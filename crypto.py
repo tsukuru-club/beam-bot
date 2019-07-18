@@ -13,7 +13,7 @@ def message(text):
         currency = text[20:23]
         data = cryptocompare.get_price(name, currency)
         price = data[name][currency]
-        return name + " in " + currency + ": " + symbols[name] + str(price)
+        return name + " in " + currency + ": " + symbols[currency] + str(price)
     else:
         return "These are the supported coins:\n" \
                 "\n" \
