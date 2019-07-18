@@ -1,5 +1,6 @@
 import requests
 import crypto
+import emoji
 
 def processMessage(text):
     if "!minecraft" in text:
@@ -15,4 +16,6 @@ def processMessage(text):
         return "✋"
     elif "get price of " in text.lower():
         return crypto.message(text)
+    elif "give me a random emoji" in text:
+        return str(emoji.random_emoji(6)[0])
     return None
