@@ -19,10 +19,10 @@ def message(text):
                 "BTC : bitcoin\n" \
                 "ETH : ethereum\n" \
                 "XMR : monero\n" \
-                "NEO : NEO\n" \
+                "NEO : neo\n" \
                 "\n" \
                 "These are the supported currencies:\n" \
                 "\n" \
                 "EUR : euro\n" \
                 "USD : us dollar\n" \
-                "GBR : pound sterling\n"
+                "GBP : pound sterling\n"
