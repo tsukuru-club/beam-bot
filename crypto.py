@@ -4,6 +4,7 @@ import cryptocompare
 
 coins = ['BTC', 'ETH', 'XMR', 'NEO']
 currencies = ['EUR', 'USD', 'GBP']
+symbols = {'EUR' : '€', 'USD' : '$', 'GBP' : '£'}
 
 def message(text):
 
@@ -12,7 +13,7 @@ def message(text):
         currency = text[20:23]
         data = cryptocompare.get_price(name, currency)
         price = data[name][currency]
-        return name + " in " + currency + ": " + str(price)
+        return name + " in " + currency + ": " + symbols[name] + str(price)
     else:
         return "These are the supported coins:\n" \
                 "\n" \
